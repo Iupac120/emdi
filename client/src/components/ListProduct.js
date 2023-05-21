@@ -1,5 +1,5 @@
 import React,{Fragment,useState,useEffect} from 'react'
-
+import EditProduct from './EditProduct'
 const ListProduct = () =>{
     const [product, setProduct] = useState([])
     const deleteProduct = async(id) => {
@@ -14,7 +14,7 @@ const ListProduct = () =>{
     }
     const getProduct = async() => {
         try {
-            const response = await fetch('localhost')
+            const response = await fetch(`http://localhost:3500/products/${id}`)
             const data = await response.json()
             setProduct(data)
         } catch (err) {
@@ -39,7 +39,7 @@ const ListProduct = () =>{
             product.map(prod => (
                 <tr key={prod.manufacturing_id}>
                 <td>{prod.description}</td>
-                <td>Edit</td>
+                <td><EditProduct prod={prod}/></td>
                 <td>
                     <button className='btn btn-danger' onClick={() => deleteProduct(prod.manu)}>Delete</button>
                 </td>

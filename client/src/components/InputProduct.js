@@ -5,7 +5,7 @@ const InputProduct = () => {
     const formSubmit = async(e) =>{
         const body = {description}
         try {
-            const response = await fetch('local',{
+            const response = await fetch(`http://localhost:3500/products`,{
                 "method":"POST",
                 "headers":{'Content-Type':"application/json"},
                 "body":JSON.stringify(body)
