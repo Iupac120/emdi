@@ -3,6 +3,7 @@ const pool = require('../db')
 const createProduct = async(req,res) => {
     try{
         const {description} = req.body
+        console.log('create')
         const product = await pool.query("INSERT INTO manufacturing(description)VALUES($1) RETURNING *",[description])
         res.status(201).json(product.rows[0])
     }catch(err){
